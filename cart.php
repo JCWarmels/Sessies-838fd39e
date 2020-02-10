@@ -29,16 +29,11 @@ session_start();
         else {
            
             if($_POST["in"]>=1 && $_POST["in"]<=3) {
-                if (!isset($_COOKIE["keuze"])) {
+                if (!isset($_SESSION["in"])) {
                     $_SESSION["in"] = $_POST["in"];
-                    $keuze = $_SESSION["in"];
                 }
-                else {
-                    setcookie("keuze", $keuze, time() + 1800);  
-                }               
-                $show_that_cookie = $keuze;
                 ?>
-                <h2><?php echo "Gekozen optie: #".$show_that_cookie;?></h2><?php
+                <h2><?php echo "Gekozen optie: #".$_SESSION["in"];?></h2><?php
             }
             else {?>
                 <h2><?php echo($_POST["in"]." is geen geldige optie.");?></h2><?php
